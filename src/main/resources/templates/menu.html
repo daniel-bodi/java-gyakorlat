@@ -40,10 +40,10 @@
                     </li>
 
                     <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link" th:href="@{/admin/pizza}">Pizza CRUD</a>
+                        <a class="nav-link" th:href="@{/admin/pizza}">Pizza CRUD (Admin)</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link" th:href="@{/admin/home}">Admin</a>
+                        <a class="nav-link" th:href="@{/admin/users}">Felhasználók (Admin)</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <span class="navbar-text ms-3 text-white">
