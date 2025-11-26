@@ -34,7 +34,7 @@ public class WebSecurityConfiguration {
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/img/**").permitAll()
-                                .requestMatchers("/", "/database").permitAll()
+                                .requestMatchers("/", "/database", "/contact").permitAll()
 
                                 .requestMatchers("/registration", "/registration_process").anonymous()
 

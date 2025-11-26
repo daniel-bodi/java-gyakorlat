@@ -21,10 +21,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "az")
-    private int id;
+    private Integer id;
 
     @Column(name = "darab")
-    private int count;
+    private Integer count;
 
     @Column(name = "felvetel")
     private LocalDateTime receivedAt;
@@ -36,19 +36,19 @@ public class Order {
     @JoinColumn(name = "pizzanev")
     private Pizza pizza;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
