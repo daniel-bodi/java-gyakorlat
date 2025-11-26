@@ -67,4 +67,12 @@ public class Order {
     public void setShippedAt(LocalDateTime shippedAt) {
         this.shippedAt = shippedAt;
     }
+
+    public Pizza getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
 }
