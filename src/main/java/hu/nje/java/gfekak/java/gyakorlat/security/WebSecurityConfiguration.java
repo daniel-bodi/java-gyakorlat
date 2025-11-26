@@ -33,12 +33,18 @@ public class WebSecurityConfiguration {
                 )
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/resources/**", "/", "/registration", "/registration_process").anonymous()
+                                .requestMatchers("/img/**").permitAll()
+                                .requestMatchers("/").permitAll()
+
+                                .requestMatchers("/registration", "/registration_process").anonymous()
+
                                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/api/**").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/api/**").permitAll()
+
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
+
                                 .anyRequest().authenticated()
                 )
                 .formLogin(
