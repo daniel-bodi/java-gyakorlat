@@ -9,7 +9,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
 
                     <li class="nav-item" sec:authorize="isAnonymous()">
                         <a class="nav-link" th:href="@{/login}">Login</a>
@@ -17,25 +17,24 @@
                     <li class="nav-item" sec:authorize="isAnonymous()">
                         <a class="nav-link" th:href="@{/registration}">Registration</a>
                     </li>
-
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="nav-link" th:href="@{/home}">Home</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="nav-link" th:href="@{/logout}">Logout</a>
                     </li>
-
                     <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                         <a class="nav-link" th:href="@{/admin/home}">Admin</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <span class="navbar-text ms-3 text-white">
+                            Welcome <span sec:authentication="principal.username"></span>!
+                        </span>
                     </li>
 
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="container mt-3" sec:authorize="isAuthenticated()">
-        <h5>Welcome <span sec:authentication="principal.username">User</span>!</h5>
-    </div>
 
 </div>
