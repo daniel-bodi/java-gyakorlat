@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza szerkesztése – PizzaLand Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="menu"></div>
+
+<div class="container my-5">
+    <h2 class="mb-4">Pizza szerkesztése</h2>
+
+    <form th:action="@{'/admin/pizza/update/' + ${pizza.name}}" th:object="${pizza}" method="post" class="mx-auto" style="max-width:600px;">
+        <div class="mb-3">
+            <label class="form-label">Név</label>
+            <input type="text" th:field="*{name}" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" th:field="*{vegetarian}" class="form-check-input" id="vegetarian">
+            <label class="form-check-label" for="vegetarian">Vegetáriánus</label>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Kategória</label>
+            <select th:field="*{category}" class="form-select">
+                <option th:each="cat : ${categories}" th:value="${cat.name}" th:text="${cat.name}"
+                        th:selected="${pizza.category != null and pizza.category == cat.name}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Mentés</button>
+        <a th:href="@{/admin/pizza}" class="btn btn-secondary w-100 mt-2">Mégse</a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza CRUD – PizzaLand Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="menu"></div>
+
+<div class="container my-5">
+    <h2 class="mb-4">Pizzák kezelése</h2>
+    <a th:href="@{/admin/pizza/new}" class="btn btn-success mb-3">Új pizza hozzáadása</a>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Név</th>
+            <th>Vegetáriánus</th>
+            <th>Kategória</th>
+            <th>Műveletek</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pizza : ${pizzas}">
+            <td th:text="${pizza.name}"></td>
+            <td th:text="${pizza.vegetarian ? 'Igen' : 'Nem'}"></td>
+            <td th:text="${pizza.category != null ? pizza.category.name : '-'}"></td>
+            <td>
+                <a th:href="@{'/admin/pizza/edit/' + ${pizza.name}}" class="btn btn-primary btn-sm">Szerkeszt</a>
+                <a th:href="@{'/admin/pizza/delete/' + ${pizza.name}}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Biztosan törli ezt a pizzát?');">Törlés</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
